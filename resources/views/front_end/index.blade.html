@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookEasy - Professional Appointment Booking SaaS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --success: #4bb543;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+        }
+        
+        .service-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            height: 100%;
+        }
+        
+        .testimonial-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .faq-item {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .faq-button {
+            width: 100%;
+            padding: 20px;
+            text-align: left;
+            background: white;
+            border: none;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-content {
+            padding: 0 20px 20px;
+        }
+        
+        .cta-section {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .pricing-card {
+            border: 2px solid #eee;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.1);
+        }
+        
+        .pricing-card:hover {
+            border-color: var(--primary);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .period {
+            color: #6c757d;
+        }
+        
+        .staff-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .staff-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid var(--light);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .feature-icon i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .booking-steps {
+            counter-reset: step-counter;
+        }
+        
+        .step-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 40px;
+        }
+        
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--dark);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .badge {
+            font-weight: 500;
+            padding: 8px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-calendar-check me-2"></i>BookEasy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#staff">Our Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#booking">Book Now</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                </ul>
+                <div class="ms-lg-3 mt-3 mt-lg-0 d-flex">
+                    <a href="customer-login.html" class="btn btn-outline-primary me-2">Customer Login</a>
+                    <a href="business-login.html" class="btn btn-primary">Business Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Smart Appointment Booking for Modern Businesses</h1>
+                    <p class="lead mb-4">BookEasy is the complete SaaS solution that helps businesses manage appointments, reduce no-shows, and grow their client base effortlessly.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#pricing" class="btn btn-light btn-lg">Start Free Trial</a>
+                        <a href="#features" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-play-circle me-2"></i>Watch Demo
+                        </a>
+                    </div>
+                    <div class="mt-4">
+                        <p class="small"><i class="fas fa-check-circle me-2"></i>Trusted by 5,000+ businesses worldwide</p>
+                        <p class="small"><i class="fas fa-check-circle me-2"></i>99.9% Uptime Guarantee</p>
+                        <p class="small"><i class="fas fa-check-circle me-2"></i>24/7 Customer Support</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        class="img-fluid rounded shadow" alt="Appointment Booking Dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-light" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose BookEasy?</h2>
+                <p class="text-muted">Powerful features designed to grow your business</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4 class="text-center">Smart Scheduling</h4>
+                    <p class="text-center text-muted">Automated appointment scheduling with intelligent time slot management and conflict detection.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h4 class="text-center">Automated Reminders</h4>
+                    <p class="text-center text-muted">Reduce no-shows with automated SMS and email reminders sent 24-48 hours before appointments.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="text-center">Business Analytics</h4>
+                    <p class="text-center text-muted">Track performance with detailed reports on revenue, client retention, and staff productivity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p class="text-muted">Professional services tailored to your needs</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="service-card shadow-sm rounded">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            class="service-img w-100 rounded-top" alt="Business Consultation">
+                        <div class="p-4">
+                            <h4 class="fw-semibold">Business Consultation</h4>
+                            <p class="text-muted small">60 min | $150</p>
+                            <p class="mb-3">Strategic business consulting session with industry experts to help grow your business.</p>
+                            <a href="#booking" class="btn btn-primary w-100">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card shadow-sm rounded">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            class="service-img w-100 rounded-top" alt="Wellness Session">
+                        <div class="p-4">
+                            <h4 class="fw-semibold">Wellness Session</h4>
+                            <p class="text-muted small">45 min | $95</p>
+                            <p class="mb-3">Comprehensive wellness and therapy sessions with certified professionals.</p>
+                            <a href="#booking" class="btn btn-primary w-100">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card shadow-sm rounded">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            class="service-img w-100 rounded-top" alt="Technical Support">
+                        <div class="p-4">
+                            <h4 class="fw-semibold">Technical Support</h4>
+                            <p class="text-muted small">30 min | $75</p>
+                            <p class="mb-3">Expert technical support and troubleshooting for your business systems.</p>
+                            <a href="#booking" class="btn btn-primary w-100">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-5 bg-light" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple, Transparent Pricing</h2>
+                <p class="text-muted">Choose the perfect plan for your business needs</p>
+            </div>
+            
+            <div class="text-center mb-5">
+                <div class="btn-group" role="group">
+                    <input type="radio" class="btn-check" name="billing" id="monthly" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="monthly">Monthly Billing</label>
+                    
+                    <input type="radio" class="btn-check" name="billing" id="yearly" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="yearly">Yearly Billing (Save 20%)</label>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="pricing-card">
+                        <h4>Starter</h4>
+                        <p class="text-muted">Perfect for small businesses</p>
+                        <div class="price">$29<span class="period">/month</span></div>
+                        <ul class="list-unstyled mt-4 mb-4">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Up to 5 staff members</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 100 appointments/month</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Email reminders</li>
+                            <li class="mb-2"><i class="fas fa-times text-muted me-2"></i> SMS notifications</li>
+                            <li class="mb-2"><i class="fas fa-times text-muted me-2"></i> Advanced analytics</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-primary w-100">Start Free Trial</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="pricing-card featured">
+                        <span class="badge bg-primary">MOST POPULAR</span>
+                        <h4>Professional</h4>
+                        <p class="text-muted">Ideal for growing businesses</p>
+                        <div class="price">$79<span class="period">/month</span></div>
+                        <ul class="list-unstyled mt-4 mb-4">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Up to 15 staff members</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 500 appointments/month</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Email & SMS reminders</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Basic analytics</li>
+                            <li class="mb-2"><i class="fas fa-times text-muted me-2"></i> Custom branding</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary w-100">Start Free Trial</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="pricing-card">
+                        <h4>Enterprise</h4>
+                        <p class="text-muted">For large organizations</p>
+                        <div class="price">$199<span class="period">/month</span></div>
+                        <ul class="list-unstyled mt-4 mb-4">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Unlimited staff members</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Unlimited appointments</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> All reminder features</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Advanced analytics</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Custom branding & API</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-primary w-100">Start Free Trial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section class="py-5" id="staff">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+                <p class="text-muted">Professional staff ready to serve you</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="staff-card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="staff-img" alt="Sarah Johnson">
+                        <h5>Sarah Johnson</h5>
+                        <p class="text-muted">Business Consultant</p>
+                        <p class="small">10+ years experience in business strategy and growth planning.</p>
+                        <span class="badge bg-primary">Available Today</span>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="staff-card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="staff-img" alt="Michael Chen">
+                        <h5>Michael Chen</h5>
+                        <p class="text-muted">Wellness Expert</p>
+                        <p class="small">Certified therapist specializing in stress management and wellness.</p>
+                        <span class="badge bg-primary">Available Today</span>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="staff-card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="staff-img" alt="Emily Rodriguez">
+                        <h5>Emily Rodriguez</h5>
+                        <p class="text-muted">Technical Specialist</p>
+                        <p class="small">IT professional with expertise in system optimization and support.</p>
+                        <span class="badge bg-warning">Available Tomorrow</span>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="staff-card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             class="staff-img" alt="David Kim">
+                        <h5>David Kim</h5>
+                        <p class="text-muted">Senior Consultant</p>
+                        <p class="small">Business development expert with Fortune 500 company experience.</p>
+                        <span class="badge bg-primary">Available Today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Process Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Booking Works</h2>
+                <p class="text-muted">Simple 3-step process to get started</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="booking-steps">
+                        <div class="step-item">
+                            <h4>Choose Service & Staff</h4>
+                            <p class="text-muted">Select from our range of services and choose your preferred staff member based on availability and expertise.</p>
+                        </div>
+                        <div class="step-item">
+                            <h4>Pick Date & Time</h4>
+                            <p class="text-muted">View real-time availability and select the perfect time slot that works for your schedule.</p>
+                        </div>
+                        <div class="step-item">
+                            <h4>Confirm & Pay</h4>
+                            <p class="text-muted">Complete your booking with secure payment and receive instant confirmation with calendar integration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="py-5" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book Your Appointment</h2>
+                <p>Fill out the form below to schedule your visit</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-5">
+                            <form id="appointmentForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="firstName" class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" id="firstName" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="lastName" class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" id="lastName" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" id="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">Phone Number *</label>
+                                            <input type="tel" class="form-control" id="phone" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="service" class="form-label">Select Service *</label>
+                                            <select class="form-select" id="service" required>
+                                                <option value="" selected disabled>Choose a service</option>
+                                                <option value="consultation">Business Consultation (60 min, $150)</option>
+                                                <option value="wellness">Wellness Session (45 min, $95)</option>
+                                                <option value="technical">Technical Support (30 min, $75)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="staff" class="form-label">Preferred Staff (Optional)</label>
+                                            <select class="form-select" id="staff">
+                                                <option value="" selected>Any available staff</option>
+                                                <option value="sarah">Sarah Johnson</option>
+                                                <option value="michael">Michael Chen</option>
+                                                <option value="emily">Emily Rodriguez</option>
+                                                <option value="david">David Kim</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="date" class="form-label">Preferred Date *</label>
+                                            <input type="date" class="form-control" id="date" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="time" class="form-label">Preferred Time *</label>
+                                            <select class="form-select" id="time" required>
+                                                <option value="" selected disabled>Select a time</option>
+                                                <option value="09:00">9:00 AM</option>
+                                                <option value="10:00">10:00 AM</option>
+                                                <option value="11:00">11:00 AM</option>
+                                                <option value="13:00">1:00 PM</option>
+                                                <option value="14:00">2:00 PM</option>
+                                                <option value="15:00">3:00 PM</option>
+                                                <option value="16:00">4:00 PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="notes" class="form-label">Additional Notes (Optional)</label>
+                                    <textarea class="form-control" id="notes" rows="3"
+                                        placeholder="Any special requests or information we should know?"></textarea>
+                                </div>
+
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        I agree to the <a href="#">terms and conditions</a> and <a href="#">privacy policy</a>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg w-100 py-3">
+                                    <i class="fas fa-calendar-check me-2"></i>Book Appointment Now
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Read about experiences from our satisfied clients</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                class="testimonial-img" alt="Sarah Johnson">
+                            <div>
+                                <h5 class="mb-0">Lisa Thompson</h5>
+                                <p class="text-muted mb-0">Small Business Owner</p>
+                            </div>
+                        </div>
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="mb-0">"BookEasy has transformed how I manage appointments. The automated reminders alone have reduced my no-shows by 80%!"</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                class="testimonial-img" alt="Michael Rodriguez">
+                            <div>
+                                <h5 class="mb-0">Dr. James Wilson</h5>
+                                <p class="text-muted mb-0">Medical Practice</p>
+                            </div>
+                        </div>
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="mb-0">"The staff management features are incredible. My team can now focus on patients instead of scheduling."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                class="testimonial-img" alt="Emily Chen">
+                            <div>
+                                <h5 class="mb-0">Maria Garcia</h5>
+                                <p class="text-muted mb-0">Spa & Wellness Center</p>
+                            </div>
+                        </div>
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="mb-0">"Since implementing BookEasy, our booking volume increased by 40%. The analytics help us make data-driven decisions."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about BookEasy</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="faq-item">
+                        <button class="faq-button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            How does the free trial work? <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="faq1" class="collapse show faq-content">
+                            <p>Our 14-day free trial gives you full access to all Professional plan features. No credit card required to start. You can upgrade, downgrade, or cancel anytime.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            Can I use BookEasy for multiple business locations? <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="faq2" class="collapse faq-content">
+                            <p>Yes! Our Enterprise plan supports multiple locations with centralized management. Each location can have its own staff, services, and booking rules.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            What payment methods do you support? <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="faq3" class="collapse faq-content">
+                            <p>We support all major credit cards, PayPal, and bank transfers. For enterprise clients, we also offer invoice-based billing with net-30 terms.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Is there a setup fee or contract? <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="faq4" class="collapse faq-content">
+                            <p>No setup fees and no long-term contracts. All plans are month-to-month. You can cancel anytime with 30 days notice.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 class="mb-4">Ready to Transform Your Business?</h2>
+            <p class="mb-4 lead">Join 5,000+ businesses using BookEasy to streamline their appointment scheduling.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#pricing" class="btn btn-light btn-lg">Start Free Trial</a>
+                <a href="#booking" class="btn btn-outline-light btn-lg">Book a Demo</a>
+            </div>
+            <p class="mt-3 small">No credit card required • 14-day free trial • Setup in minutes</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="mb-4"><i class="fas fa-calendar-check me-2"></i>BookEasy</h4>
+                    <p>Professional appointment booking software for businesses of all sizes. Streamline your scheduling, reduce no-shows, and grow your business.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-4">Product</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#features" class="text-decoration-none text-light">Features</a></li>
+                        <li class="mb-2"><a href="#pricing" class="text-decoration-none text-light">Pricing</a></li>
+                        <li class="mb-2"><a href="#testimonials" class="text-decoration-none text-light">Testimonials</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Updates</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-4">Company</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5 class="mb-4">Contact & Support</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Business Ave, Suite 100</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> (555) 123-4567</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> support@bookeasy.com</li>
+                        <li class="mb-2"><i class="fas fa-clock me-2"></i> 24/7 Support Available</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="row py-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0 text-light">© 2023 BookEasy. All rights reserved. Designed by Shahar Yar.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-light">
+                        <a href="#" class="text-decoration-none text-light me-3">Privacy Policy</a>
+                        <a href="#" class="text-decoration-none text-light me-3">Terms of Service</a>
+                        <a href="#" class="text-decoration-none text-light">Cookie Policy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple form validation and booking simulation
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate booking process
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            
+            if (service && date && time) {
+                alert('Booking request submitted successfully! Our team will confirm your appointment within 2 hours.');
+                this.reset();
+            }
+        });
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+
+        // Billing toggle functionality
+        document.querySelectorAll('input[name="billing"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const prices = document.querySelectorAll('.price');
+                if (this.id === 'yearly') {
+                    prices.forEach(price => {
+                        const currentPrice = parseFloat(price.textContent.replace('$', ''));
+                        const yearlyPrice = (currentPrice * 0.8).toFixed(0);
+                        price.innerHTML = `$${yearlyPrice}<span class="period">/month</span>`;
+                    });
+                } else {
+                    prices.forEach((price, index) => {
+                        const monthlyPrices = [29, 79, 199];
+                        price.innerHTML = `$${monthlyPrices[index]}<span class="period">/month</span>`;
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
