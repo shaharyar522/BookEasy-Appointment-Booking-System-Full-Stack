@@ -1,0 +1,54 @@
+bookeasy/
+├── app/
+│   ├── Models/
+│   │   ├── User.php
+│   │   ├── Service.php
+│   │   ├── Staff.php
+│   │   ├── Appointment.php
+│   │   └── Payment.php
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Admin/
+│   │   │   │   ├── DashboardController.php
+│   │   │   │   ├── ServiceController.php
+│   │   │   │   ├── StaffController.php
+│   │   │   │   ├── AppointmentController.php
+│   │   │   │   └── PaymentController.php
+│   │   │   └── User/
+│   │   │       ├── DashboardController.php
+│   │   │       ├── BookingController.php
+│   │   │       └── PaymentController.php
+│   │   └── Middleware/
+│   │       └── RoleMiddleware.php
+├── database/
+│   ├── migrations/
+│   │   ├── create_users_table.php
+│   │   ├── create_services_table.php
+│   │   ├── create_staff_table.php
+│   │   ├── create_appointments_table.php
+│   │   ├── create_payments_table.php
+│   │   └── create_service_staff_table.php
+│   └── seeders/
+│       ├── AdminSeeder.php
+│       └── DatabaseSeeder.php
+├── resources/
+│   └── views/
+│       ├── admin/
+│       │   ├── dashboard.blade.php
+│       │   ├── services/
+│       │   ├── staff/
+│       │   ├── appointments/
+│       │   └── payments/
+│       └── user/
+│           ├── dashboard.blade.php
+│           ├── services.blade.php
+│           └── booking.blade.php
+├── routes/
+│   └── web.php
+├── config/
+│   └── constants.php
+└── public/
+    └── assets/
+        ├── css/
+        ├── js/
+        └── images/

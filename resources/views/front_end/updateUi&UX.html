@@ -326,6 +326,51 @@
             color: var(--primary);
         }
         
+        /* Booking Form Section */
+        .booking-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: none;
+        }
+        
+        .booking-card .card-body {
+            padding: 50px;
+        }
+        
+        .form-control, .form-select {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-light);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        /* Terms Modal */
+        .terms-modal .modal-content {
+            border-radius: 16px;
+            border: none;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .terms-modal .modal-header {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 16px 16px 0 0;
+            border-bottom: none;
+        }
+        
+        .terms-modal .modal-body {
+            padding: 30px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
         /* Pricing Cards */
         .pricing-card {
             border: 1px solid var(--gray-light);
@@ -667,32 +712,6 @@
             box-shadow: var(--shadow-lg);
         }
         
-        /* Form Styles */
-        .form-control, .form-select {
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid var(--gray-light);
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-        
-        .form-control:focus, .form-select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-        }
-        
-        /* Booking Form Card */
-        .booking-card {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-            border: none;
-        }
-        
-        .booking-card .card-body {
-            padding: 50px;
-        }
-        
         /* Responsive Adjustments */
         @media (max-width: 992px) {
             .hero h1 {
@@ -706,6 +725,10 @@
             .pricing-card.featured {
                 transform: scale(1);
                 margin: 20px 0;
+            }
+            
+            .booking-card .card-body {
+                padding: 30px;
             }
         }
         
@@ -721,10 +744,6 @@
             
             .section-title h2 {
                 font-size: 1.8rem;
-            }
-            
-            .booking-card .card-body {
-                padding: 30px;
             }
             
             .step-item {
@@ -790,6 +809,7 @@
                     <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#booking">Book Now</a></li>
                     <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
                     <li class="nav-item"><a class="nav-link" href="#staff">Our Team</a></li>
                     <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
@@ -918,6 +938,216 @@
         </div>
     </section>
 
+    <!-- Booking Form Section -->
+    <section class="py-5" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book Your Appointment</h2>
+                <p>Fill out the form below to schedule your visit</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card shadow-sm booking-card">
+                        <div class="card-body p-5">
+                            <form id="appointmentForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="firstName" class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" id="firstName" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="lastName" class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" id="lastName" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" id="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">Phone Number *</label>
+                                            <input type="tel" class="form-control" id="phone" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="service" class="form-label">Select Service *</label>
+                                            <select class="form-select" id="service" required>
+                                                <option value="" selected disabled>Choose a service</option>
+                                                <option value="consultation">Business Consultation (60 min, $150)</option>
+                                                <option value="wellness">Wellness Session (45 min, $95)</option>
+                                                <option value="technical">Technical Support (30 min, $75)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="staff" class="form-label">Preferred Staff (Optional)</label>
+                                            <select class="form-select" id="staff">
+                                                <option value="" selected>Any available staff</option>
+                                                <option value="sarah">Sarah Johnson</option>
+                                                <option value="michael">Michael Chen</option>
+                                                <option value="emily">Emily Rodriguez</option>
+                                                <option value="david">David Kim</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="date" class="form-label">Preferred Date *</label>
+                                            <input type="date" class="form-control" id="date" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="time" class="form-label">Preferred Time *</label>
+                                            <select class="form-select" id="time" required>
+                                                <option value="" selected disabled>Select a time</option>
+                                                <option value="09:00">9:00 AM</option>
+                                                <option value="10:00">10:00 AM</option>
+                                                <option value="11:00">11:00 AM</option>
+                                                <option value="12:00">12:00 PM</option>
+                                                <option value="13:00">1:00 PM</option>
+                                                <option value="14:00">2:00 PM</option>
+                                                <option value="15:00">3:00 PM</option>
+                                                <option value="16:00">4:00 PM</option>
+                                                <option value="17:00">5:00 PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="notes" class="form-label">Additional Notes (Optional)</label>
+                                    <textarea class="form-control" id="notes" rows="3"
+                                        placeholder="Any special requests or information we should know?"></textarea>
+                                </div>
+
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">terms and conditions</a> and <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">privacy policy</a>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg w-100 py-3">
+                                    <i class="fas fa-calendar-check me-2"></i>Book Appointment Now
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms and Conditions Modal -->
+    <div class="modal fade terms-modal" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Appointment Booking</h6>
+                    <p>By booking an appointment through BookEasy, you agree to provide accurate and complete information. Appointments are confirmed subject to availability.</p>
+                    
+                    <h6>2. Cancellation Policy</h6>
+                    <p>We require at least 24 hours notice for appointment cancellations. Cancellations made with less than 24 hours notice may be subject to a cancellation fee.</p>
+                    
+                    <h6>3. Payment Terms</h6>
+                    <p>Payment for services is due at the time of booking unless otherwise arranged. We accept all major credit cards and PayPal.</p>
+                    
+                    <h6>4. Rescheduling</h6>
+                    <p>Appointments can be rescheduled up to 24 hours before the scheduled time without penalty. Rescheduling within 24 hours may incur a fee.</p>
+                    
+                    <h6>5. No-Show Policy</h6>
+                    <p>Clients who fail to show up for their appointment without prior notice may be charged the full service fee and may be required to prepay for future appointments.</p>
+                    
+                    <h6>6. Data Privacy</h6>
+                    <p>We respect your privacy and will handle your personal information in accordance with our Privacy Policy.</p>
+                    
+                    <h6>7. Service Modifications</h6>
+                    <p>We reserve the right to modify or cancel services due to unforeseen circumstances. In such cases, we will provide as much notice as possible and offer alternatives.</p>
+                    
+                    <h6>8. Liability</h6>
+                    <p>Our liability is limited to the value of the service provided. We are not liable for any indirect or consequential damages.</p>
+                    
+                    <h6>9. Governing Law</h6>
+                    <p>These terms are governed by the laws of the jurisdiction in which our business is registered.</p>
+                    
+                    <h6>10. Changes to Terms</h6>
+                    <p>We reserve the right to update these terms and conditions at any time. Continued use of our services constitutes acceptance of the updated terms.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade terms-modal" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Information We Collect</h6>
+                    <p>We collect personal information that you provide when booking appointments, including name, contact details, and service preferences.</p>
+                    
+                    <h6>2. How We Use Your Information</h6>
+                    <p>We use your information to schedule appointments, send reminders, process payments, and improve our services.</p>
+                    
+                    <h6>3. Information Sharing</h6>
+                    <p>We do not sell or rent your personal information to third parties. We may share information with service providers who assist in our operations.</p>
+                    
+                    <h6>4. Data Security</h6>
+                    <p>We implement appropriate security measures to protect your personal information from unauthorized access or disclosure.</p>
+                    
+                    <h6>5. Data Retention</h6>
+                    <p>We retain your personal information for as long as necessary to fulfill the purposes outlined in this policy, unless a longer retention period is required by law.</p>
+                    
+                    <h6>6. Your Rights</h6>
+                    <p>You have the right to access, correct, or delete your personal information. You may also object to or restrict certain processing of your data.</p>
+                    
+                    <h6>7. Cookies and Tracking</h6>
+                    <p>We use cookies and similar technologies to enhance your experience on our website and analyze how our services are used.</p>
+                    
+                    <h6>8. Third-Party Links</h6>
+                    <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of these websites.</p>
+                    
+                    <h6>9. Children's Privacy</h6>
+                    <p>Our services are not directed to individuals under the age of 16. We do not knowingly collect personal information from children.</p>
+                    
+                    <h6>10. Changes to This Policy</h6>
+                    <p>We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on our website.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Pricing Section -->
     <section class="bg-light" id="pricing">
         <div class="container">
@@ -1025,6 +1255,7 @@
                         <span class="badge badge-accent">Available Tomorrow</span>
                     </div>
                 </div>
+
                 <div class="col-md-3 mb-4">
                     <div class="staff-card">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
@@ -1035,6 +1266,7 @@
                         <span class="badge badge-primary">Available Today</span>
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>
@@ -1063,6 +1295,7 @@
                         <p class="mb-0">"BookEasy has transformed how I manage appointments. The automated reminders alone have reduced my no-shows by 80%!"</p>
                     </div>
                 </div>
+
                 <div class="col-md-4 mb-4">
                     <div class="testimonial-card">
                         <div class="d-flex align-items-center mb-3">
@@ -1079,6 +1312,7 @@
                         <p class="mb-0">"The staff management features are incredible. My team can now focus on patients instead of scheduling."</p>
                     </div>
                 </div>
+                
                 <div class="col-md-4 mb-4">
                     <div class="testimonial-card">
                         <div class="d-flex align-items-center mb-3">
@@ -1207,8 +1441,8 @@
                     </div>
                     <div class="col-md-6 text-md-end">
                         <p class="mb-0">
-                            <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
-                            <a href="#" class="text-decoration-none me-3">Terms of Service</a>
+                            <a href="#" class="text-decoration-none me-3" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a>
+                            <a href="#" class="text-decoration-none me-3" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
                             <a href="#" class="text-decoration-none">Cookie Policy</a>
                         </p>
                     </div>
@@ -1232,6 +1466,12 @@
         // Simple form validation and booking simulation
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Check if terms are accepted
+            if (!document.getElementById('terms').checked) {
+                alert('Please accept the terms and conditions to proceed with booking.');
+                return;
+            }
             
             // Simulate booking process
             const service = document.getElementById('service').value;
