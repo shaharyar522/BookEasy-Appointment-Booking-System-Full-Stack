@@ -1,50 +1,205 @@
-i will give me complete front end and backend there is two sperate ok front end and backend.
-
-so i want to .
-firt you complete read this part-1 front end and 
-
-and backend part-2 after you complete carefully read this.
-
-i  am telling you complete whole webiste
-
-after that i wam complete backend  flow of this and intergratied 
-to fronet end to backend.
-i wna to like this.
-ok first you compelete read part-1 and part-2 until i am telling you you do not give me output ok
-you are my assitance now you 
-
-part-1
-
-'<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookEasy - Professional Appointment Booking SaaS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #4cc9f0;
-            --success: #4bb543;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --light: #f8f9fa;
-            --dark: #212529;
+            --primary: #4F46E5;
+            --primary-dark: #4338CA;
+            --primary-light: #818CF8;
+            --secondary: #10B981;
+            --accent: #F59E0B;
+            --danger: #EF4444;
+            --light: #F8FAFC;
+            --dark: #1E293B;
+            --gray: #64748B;
+            --gray-light: #E2E8F0;
+            --gradient-primary: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            --gradient-secondary: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            --gradient-dark: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
         }
         
-        .hero {
-            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+        
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        /* Header Styles */
+        .navbar {
+            padding: 1.2rem 0;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .btn {
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
             color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            top: -300px;
+            right: -200px;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            bottom: -200px;
+            left: -100px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .hero-img-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-img {
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        /* Section Styles */
+        section {
             padding: 100px 0;
         }
         
@@ -54,31 +209,220 @@ part-1
         }
         
         .section-title h2 {
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
         }
         
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Feature Cards */
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid var(--gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(79, 70, 229, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background: var(--gradient-primary);
+            transform: scale(1.1);
+        }
+        
+        .feature-card:hover .feature-icon i {
+            color: white;
+        }
+        
+        .feature-icon i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        /* Service Cards */
         .service-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             border: none;
             height: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
         }
         
         .service-img {
-            height: 200px;
+            height: 220px;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
         
-        .testimonial-card {
-            background: var(--light);
+        .service-card:hover .service-img {
+            transform: scale(1.05);
+        }
+        
+        .service-card .card-body {
             padding: 30px;
-            border-radius: 10px;
+        }
+        
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Pricing Cards */
+        .pricing-card {
+            border: 1px solid var(--gray-light);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
             height: 100%;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .pricing-card.featured::before {
+            height: 6px;
+            background: var(--gradient-secondary);
+        }
+        
+        .pricing-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+        
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .period {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+        
+        /* Staff Cards */
+        .staff-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .staff-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid white;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            height: 100%;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 5rem;
+            color: var(--gray-light);
+            font-family: Georgia, serif;
+            line-height: 1;
         }
         
         .testimonial-img {
@@ -88,11 +432,14 @@ part-1
             object-fit: cover;
         }
         
+        /* FAQ Section */
         .faq-item {
-            border: 1px solid #eee;
-            border-radius: 10px;
+            border: 1px solid var(--gray-light);
+            border-radius: 12px;
             margin-bottom: 15px;
             overflow: hidden;
+            background: white;
+            box-shadow: var(--shadow-sm);
         }
         
         .faq-button {
@@ -101,96 +448,204 @@ part-1
             text-align: left;
             background: white;
             border: none;
-            font-weight: 500;
+            font-weight: 600;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-button:hover {
+            background: var(--light);
+        }
+        
+        .faq-button:not(.collapsed) {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .faq-button:not(.collapsed) i {
+            transform: rotate(180deg);
         }
         
         .faq-content {
             padding: 0 20px 20px;
         }
         
+        /* CTA Section */
         .cta-section {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.1);
+            top: -200px;
+            right: -100px;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.1);
+            bottom: -150px;
+            left: -100px;
+        }
+        
+        .cta-section h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section .btn-light {
+            background: white;
+            color: var(--dark);
+            border-radius: 8px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-section .btn-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Footer */
+        footer {
             background: var(--dark);
             color: white;
-            padding: 80px 0;
-            text-align: center;
+            padding-top: 80px;
         }
         
-        .pricing-card {
-            border: 2px solid #eee;
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
+        .footer-logo {
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-links h5 {
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient-primary);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links ul li a {
+            color: #CBD5E1;
+            text-decoration: none;
             transition: all 0.3s ease;
-            height: 100%;
         }
         
-        .pricing-card.featured {
-            border-color: var(--primary);
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.1);
+        .footer-links ul li a:hover {
+            color: white;
+            padding-left: 5px;
         }
         
-        .pricing-card:hover {
-            border-color: var(--primary);
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
         }
         
-        .price {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .period {
-            color: #6c757d;
-        }
-        
-        .staff-card {
-            text-align: center;
-            padding: 30px 20px;
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-        }
-        
-        .staff-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .staff-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            border: 5px solid var(--light);
-        }
-        
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(67, 97, 238, 0.1);
-            border-radius: 50%;
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
         
-        .feature-icon i {
-            font-size: 2rem;
-            color: var(--primary);
+        .social-icon:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-3px);
         }
         
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding: 25px 0;
+            margin-top: 50px;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Badge Styles */
+        .badge {
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+        }
+        
+        .badge-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .badge-accent {
+            background: var(--gradient-accent);
+            color: white;
+        }
+        
+        /* Booking Steps */
         .booking-steps {
             counter-reset: step-counter;
         }
         
         .step-item {
             position: relative;
-            padding-left: 80px;
-            margin-bottom: 40px;
+            padding-left: 100px;
+            margin-bottom: 50px;
         }
         
         .step-item::before {
@@ -199,64 +654,130 @@ part-1
             position: absolute;
             left: 0;
             top: 0;
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 700;
+            box-shadow: var(--shadow-lg);
         }
         
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--dark);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            text-decoration: none;
+        /* Form Styles */
+        .form-control, .form-select {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-light);
             transition: all 0.3s ease;
+            font-size: 1rem;
         }
         
-        .social-icon:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-        
-        .btn-primary {
-            background: var(--primary);
+        .form-control:focus, .form-select:focus {
             border-color: var(--primary);
-            padding: 12px 30px;
-            font-weight: 500;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
         
-        .btn-primary:hover {
-            background: var(--secondary);
-            border-color: var(--secondary);
+        /* Booking Form Card */
+        .booking-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: none;
         }
         
-        .badge {
-            font-weight: 500;
-            padding: 8px 15px;
+        .booking-card .card-body {
+            padding: 50px;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+                margin: 20px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .booking-card .card-body {
+                padding: 30px;
+            }
+            
+            .step-item {
+                padding-left: 0;
+                padding-top: 90px;
+                text-align: center;
+            }
+            
+            .step-item::before {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0;
+            }
+        }
+        
+        /* Utility Classes */
+        .bg-light {
+            background-color: var(--light) !important;
+        }
+        
+        .text-primary {
+            color: var(--primary) !important;
+        }
+        
+        .text-muted {
+            color: var(--gray) !important;
+        }
+        
+        .mb-0 {
+            margin-bottom: 0 !important;
+        }
+        
+        .mt-4 {
+            margin-top: 1.5rem !important;
+        }
+        
+        .mb-4 {
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .text-warning {
+            color: var(--accent) !important;
+        }
+        
+        .text-success {
+            color: var(--secondary) !important;
         }
     </style>
 </head>
 
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="fas fa-calendar-check me-2"></i>BookEasy
@@ -266,12 +787,11 @@ part-1
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
                     <li class="nav-item"><a class="nav-link" href="#staff">Our Team</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#booking">Book Now</a></li>
                     <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
                 </ul>
                 <div class="ms-lg-3 mt-3 mt-lg-0 d-flex">
@@ -287,8 +807,8 @@ part-1
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">Smart Appointment Booking for Modern Businesses</h1>
-                    <p class="lead mb-4">BookEasy is the complete SaaS solution that helps businesses manage appointments, reduce no-shows, and grow their client base effortlessly.</p>
+                    <h1>Smart Appointment Booking for Modern Businesses</h1>
+                    <p>BookEasy is the complete SaaS solution that helps businesses manage appointments, reduce no-shows, and grow their client base effortlessly.</p>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="#pricing" class="btn btn-light btn-lg">Start Free Trial</a>
                         <a href="#features" class="btn btn-outline-light btn-lg">
@@ -302,85 +822,93 @@ part-1
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        class="img-fluid rounded shadow" alt="Appointment Booking Dashboard">
+                    <div class="hero-img-container floating">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            class="img-fluid hero-img" alt="Appointment Booking Dashboard">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="py-5 bg-light" id="features">
+    <section class="bg-light" id="features">
         <div class="container">
             <div class="section-title">
                 <h2>Why Choose BookEasy?</h2>
-                <p class="text-muted">Powerful features designed to grow your business</p>
+                <p>Powerful features designed to grow your business</p>
             </div>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-calendar-alt"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h4 class="text-center">Smart Scheduling</h4>
+                        <p class="text-center">Automated appointment scheduling with intelligent time slot management and conflict detection.</p>
                     </div>
-                    <h4 class="text-center">Smart Scheduling</h4>
-                    <p class="text-center text-muted">Automated appointment scheduling with intelligent time slot management and conflict detection.</p>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-bell"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h4 class="text-center">Automated Reminders</h4>
+                        <p class="text-center">Reduce no-shows with automated SMS and email reminders sent 24-48 hours before appointments.</p>
                     </div>
-                    <h4 class="text-center">Automated Reminders</h4>
-                    <p class="text-center text-muted">Reduce no-shows with automated SMS and email reminders sent 24-48 hours before appointments.</p>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="text-center">Business Analytics</h4>
+                        <p class="text-center">Track performance with detailed reports on revenue, client retention, and staff productivity.</p>
                     </div>
-                    <h4 class="text-center">Business Analytics</h4>
-                    <p class="text-center text-muted">Track performance with detailed reports on revenue, client retention, and staff productivity.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="py-5" id="services">
+    <section id="services">
         <div class="container">
             <div class="section-title">
                 <h2>Our Services</h2>
-                <p class="text-muted">Professional services tailored to your needs</p>
+                <p>Professional services tailored to your needs</p>
             </div>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="service-card shadow-sm rounded">
+                    <div class="service-card shadow-sm">
                         <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                            class="service-img w-100 rounded-top" alt="Business Consultation">
-                        <div class="p-4">
+                            class="service-img w-100" alt="Business Consultation">
+                        <div class="card-body">
                             <h4 class="fw-semibold">Business Consultation</h4>
-                            <p class="text-muted small">60 min | $150</p>
+                            <p class="text-muted small">60 min | <span class="service-price">$150</span></p>
                             <p class="mb-3">Strategic business consulting session with industry experts to help grow your business.</p>
                             <a href="#booking" class="btn btn-primary w-100">Book Now</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="service-card shadow-sm rounded">
+                    <div class="service-card shadow-sm">
                         <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                            class="service-img w-100 rounded-top" alt="Wellness Session">
-                        <div class="p-4">
+                            class="service-img w-100" alt="Wellness Session">
+                        <div class="card-body">
                             <h4 class="fw-semibold">Wellness Session</h4>
-                            <p class="text-muted small">45 min | $95</p>
+                            <p class="text-muted small">45 min | <span class="service-price">$95</span></p>
                             <p class="mb-3">Comprehensive wellness and therapy sessions with certified professionals.</p>
                             <a href="#booking" class="btn btn-primary w-100">Book Now</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="service-card shadow-sm rounded">
+                    <div class="service-card shadow-sm">
                         <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                            class="service-img w-100 rounded-top" alt="Technical Support">
-                        <div class="p-4">
+                            class="service-img w-100" alt="Technical Support">
+                        <div class="card-body">
                             <h4 class="fw-semibold">Technical Support</h4>
-                            <p class="text-muted small">30 min | $75</p>
+                            <p class="text-muted small">30 min | <span class="service-price">$75</span></p>
                             <p class="mb-3">Expert technical support and troubleshooting for your business systems.</p>
                             <a href="#booking" class="btn btn-primary w-100">Book Now</a>
                         </div>
@@ -391,11 +919,11 @@ part-1
     </section>
 
     <!-- Pricing Section -->
-    <section class="py-5 bg-light" id="pricing">
+    <section class="bg-light" id="pricing">
         <div class="container">
             <div class="section-title">
                 <h2>Simple, Transparent Pricing</h2>
-                <p class="text-muted">Choose the perfect plan for your business needs</p>
+                <p>Choose the perfect plan for your business needs</p>
             </div>
             
             <div class="text-center mb-5">
@@ -426,7 +954,7 @@ part-1
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="pricing-card featured">
-                        <span class="badge bg-primary">MOST POPULAR</span>
+                        <span class="badge badge-accent">MOST POPULAR</span>
                         <h4>Professional</h4>
                         <p class="text-muted">Ideal for growing businesses</p>
                         <div class="price">$79<span class="period">/month</span></div>
@@ -460,195 +988,51 @@ part-1
     </section>
 
     <!-- Staff Section -->
-    <section class="py-5" id="staff">
+    <section id="staff">
         <div class="container">
             <div class="section-title">
                 <h2>Meet Our Team</h2>
-                <p class="text-muted">Professional staff ready to serve you</p>
+                <p>Professional staff ready to serve you</p>
             </div>
             <div class="row">
                 <div class="col-md-3 mb-4">
-                    <div class="staff-card shadow-sm">
+                    <div class="staff-card">
                         <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
                              class="staff-img" alt="Sarah Johnson">
                         <h5>Sarah Johnson</h5>
                         <p class="text-muted">Business Consultant</p>
                         <p class="small">10+ years experience in business strategy and growth planning.</p>
-                        <span class="badge bg-primary">Available Today</span>
+                        <span class="badge badge-primary">Available Today</span>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="staff-card shadow-sm">
+                    <div class="staff-card">
                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
                              class="staff-img" alt="Michael Chen">
                         <h5>Michael Chen</h5>
                         <p class="text-muted">Wellness Expert</p>
                         <p class="small">Certified therapist specializing in stress management and wellness.</p>
-                        <span class="badge bg-primary">Available Today</span>
+                        <span class="badge badge-primary">Available Today</span>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="staff-card shadow-sm">
+                    <div class="staff-card">
                         <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
                              class="staff-img" alt="Emily Rodriguez">
                         <h5>Emily Rodriguez</h5>
                         <p class="text-muted">Technical Specialist</p>
                         <p class="small">IT professional with expertise in system optimization and support.</p>
-                        <span class="badge bg-warning">Available Tomorrow</span>
+                        <span class="badge badge-accent">Available Tomorrow</span>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="staff-card shadow-sm">
+                    <div class="staff-card">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
                              class="staff-img" alt="David Kim">
                         <h5>David Kim</h5>
                         <p class="text-muted">Senior Consultant</p>
                         <p class="small">Business development expert with Fortune 500 company experience.</p>
-                        <span class="badge bg-primary">Available Today</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Process Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="section-title">
-                <h2>How Booking Works</h2>
-                <p class="text-muted">Simple 3-step process to get started</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="booking-steps">
-                        <div class="step-item">
-                            <h4>Choose Service & Staff</h4>
-                            <p class="text-muted">Select from our range of services and choose your preferred staff member based on availability and expertise.</p>
-                        </div>
-                        <div class="step-item">
-                            <h4>Pick Date & Time</h4>
-                            <p class="text-muted">View real-time availability and select the perfect time slot that works for your schedule.</p>
-                        </div>
-                        <div class="step-item">
-                            <h4>Confirm & Pay</h4>
-                            <p class="text-muted">Complete your booking with secure payment and receive instant confirmation with calendar integration.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Form Section -->
-    <section class="py-5" id="booking">
-        <div class="container">
-            <div class="section-title">
-                <h2>Book Your Appointment</h2>
-                <p>Fill out the form below to schedule your visit</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card shadow-sm">
-                        <div class="card-body p-5">
-                            <form id="appointmentForm">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="firstName" class="form-label">First Name *</label>
-                                            <input type="text" class="form-control" id="firstName" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="lastName" class="form-label">Last Name *</label>
-                                            <input type="text" class="form-control" id="lastName" required>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email Address *</label>
-                                            <input type="email" class="form-control" id="email" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="phone" class="form-label">Phone Number *</label>
-                                            <input type="tel" class="form-control" id="phone" required>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="service" class="form-label">Select Service *</label>
-                                            <select class="form-select" id="service" required>
-                                                <option value="" selected disabled>Choose a service</option>
-                                                <option value="consultation">Business Consultation (60 min, $150)</option>
-                                                <option value="wellness">Wellness Session (45 min, $95)</option>
-                                                <option value="technical">Technical Support (30 min, $75)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="staff" class="form-label">Preferred Staff (Optional)</label>
-                                            <select class="form-select" id="staff">
-                                                <option value="" selected>Any available staff</option>
-                                                <option value="sarah">Sarah Johnson</option>
-                                                <option value="michael">Michael Chen</option>
-                                                <option value="emily">Emily Rodriguez</option>
-                                                <option value="david">David Kim</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="date" class="form-label">Preferred Date *</label>
-                                            <input type="date" class="form-control" id="date" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="time" class="form-label">Preferred Time *</label>
-                                            <select class="form-select" id="time" required>
-                                                <option value="" selected disabled>Select a time</option>
-                                                <option value="09:00">9:00 AM</option>
-                                                <option value="10:00">10:00 AM</option>
-                                                <option value="11:00">11:00 AM</option>
-                                                <option value="13:00">1:00 PM</option>
-                                                <option value="14:00">2:00 PM</option>
-                                                <option value="15:00">3:00 PM</option>
-                                                <option value="16:00">4:00 PM</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-4">
-                                    <label for="notes" class="form-label">Additional Notes (Optional)</label>
-                                    <textarea class="form-control" id="notes" rows="3"
-                                        placeholder="Any special requests or information we should know?"></textarea>
-                                </div>
-
-                                <div class="form-check mb-4">
-                                    <input class="form-check-input" type="checkbox" id="terms" required>
-                                    <label class="form-check-label" for="terms">
-                                        I agree to the <a href="#">terms and conditions</a> and <a href="#">privacy policy</a>
-                                    </label>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary btn-lg w-100 py-3">
-                                    <i class="fas fa-calendar-check me-2"></i>Book Appointment Now
-                                </button>
-                            </form>
-                        </div>
+                        <span class="badge badge-primary">Available Today</span>
                     </div>
                 </div>
             </div>
@@ -656,7 +1040,7 @@ part-1
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-5 bg-light" id="testimonials">
+    <section class="bg-light" id="testimonials">
         <div class="container">
             <div class="section-title">
                 <h2>What Our Clients Say</h2>
@@ -716,7 +1100,7 @@ part-1
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-5">
+    <section>
         <div class="container">
             <div class="section-title">
                 <h2>Frequently Asked Questions</h2>
@@ -763,7 +1147,7 @@ part-1
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container text-center">
+        <div class="container text-center position-relative" style="z-index: 1;">
             <h2 class="mb-4">Ready to Transform Your Business?</h2>
             <p class="mb-4 lead">Join 5,000+ businesses using BookEasy to streamline their appointment scheduling.</p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
@@ -775,58 +1159,59 @@ part-1
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white pt-5">
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h4 class="mb-4"><i class="fas fa-calendar-check me-2"></i>BookEasy</h4>
+                    <div class="footer-logo"><i class="fas fa-calendar-check me-2"></i>BookEasy</div>
                     <p>Professional appointment booking software for businesses of all sizes. Streamline your scheduling, reduce no-shows, and grow your business.</p>
-                    <div class="d-flex mt-4">
+                    <div class="social-icons">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4">
-                    <h5 class="mb-4">Product</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#features" class="text-decoration-none text-light">Features</a></li>
-                        <li class="mb-2"><a href="#pricing" class="text-decoration-none text-light">Pricing</a></li>
-                        <li class="mb-2"><a href="#testimonials" class="text-decoration-none text-light">Testimonials</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Updates</a></li>
+                <div class="col-lg-2 col-md-4 mb-4 footer-links">
+                    <h5>Product</h5>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#">Updates</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4">
-                    <h5 class="mb-4">Company</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">About Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Careers</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Blog</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-light">Press</a></li>
+                <div class="col-lg-2 col-md-4 mb-4 footer-links">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-4 mb-4">
-                    <h5 class="mb-4">Contact & Support</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Business Ave, Suite 100</li>
-                        <li class="mb-2"><i class="fas fa-phone me-2"></i> (555) 123-4567</li>
-                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> support@bookeasy.com</li>
-                        <li class="mb-2"><i class="fas fa-clock me-2"></i> 24/7 Support Available</li>
+                <div class="col-lg-4 col-md-4 mb-4 footer-links">
+                    <h5>Contact & Support</h5>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Business Ave, Suite 100</li>
+                        <li><i class="fas fa-phone me-2"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> support@bookeasy.com</li>
+                        <li><i class="fas fa-clock me-2"></i> 24/7 Support Available</li>
                     </ul>
                 </div>
             </div>
-            <hr class="bg-light">
-            <div class="row py-3">
-                <div class="col-md-6 mb-3 mb-md-0">
-                    <p class="mb-0 text-light">© 2023 BookEasy. All rights reserved. Designed by Shahar Yar.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <p class="mb-0 text-light">
-                        <a href="#" class="text-decoration-none text-light me-3">Privacy Policy</a>
-                        <a href="#" class="text-decoration-none text-light me-3">Terms of Service</a>
-                        <a href="#" class="text-decoration-none text-light">Cookie Policy</a>
-                    </p>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <p class="mb-0">© 2023 BookEasy. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p class="mb-0">
+                            <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+                            <a href="#" class="text-decoration-none me-3">Terms of Service</a>
+                            <a href="#" class="text-decoration-none">Cookie Policy</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -834,6 +1219,16 @@ part-1
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
         // Simple form validation and booking simulation
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -873,5 +1268,4 @@ part-1
         });
     </script>
 </body>
-</html>'
-
+</html>

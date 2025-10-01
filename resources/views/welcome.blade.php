@@ -920,7 +920,7 @@
         // Billing toggle functionality
         document.querySelectorAll('input[name="billing"]').forEach(radio => {
             radio.addEventListener('change', function() {
-                const prices = document.querySelectorAll('.price');
+                const prices = document.querySelectoBrAll('.price');
                 if (this.id === 'yearly') {
                     prices.forEach(price => {
                         const currentPrice = parseFloat(price.textContent.replace('$', ''));

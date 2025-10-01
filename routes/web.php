@@ -2,12 +2,17 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
+use App\Traits\Sluggable;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/tes-slug', function () {
+    $post = new Post();
+    return $post->generateSlug("Hello Laravel Traits");
+});
 
 
 Route::prefix('admin')->group(function () {
@@ -17,11 +22,11 @@ Route::prefix('admin')->group(function () {
 });
 
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

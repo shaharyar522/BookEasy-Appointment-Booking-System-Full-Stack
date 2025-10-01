@@ -1,0 +1,272 @@
+BookEasy Project – Complete Day-by-Day Flow (Laravel)
+Day 1: Laravel Setup & Environment
+
+Tasks:
+
+Install Laravel: composer create-project laravel/laravel bookeasy
+
+Setup .env file (DB, Mail, App URL)
+
+Run php artisan migrate for default tables
+
+Install Laravel Breeze or Jetstream for authentication
+
+Test login/register
+
+Create admin folder in resources/views/admin
+
+Copy dashboard HTML to dashboard.blade.php
+
+Setup welcome.blade.php for frontend website
+
+Files:
+
+.env, resources/views/admin/dashboard.blade.php, resources/views/welcome.blade.php
+
+Day 2: Database Design & Migrations
+
+Tables:
+
+Table	Fields
+roles	id, name
+users	id, name, email, password, role_id
+services	id, name, duration, price, status
+service_staff	id, service_id, staff_id
+appointments	id, client_id, service_id, staff_id, date_time, status, amount
+pricing_plans	id, name, price, features (json), status
+website_contents	id, hero_title, hero_subtitle, hero_image
+testimonials	id, client_name, position, text, rating, status
+
+Tasks:
+
+php artisan make:migration create_services_table --create=services
+
+Add fields
+
+Setup service_staff pivot table for many-to-many
+
+Run php artisan migrate
+
+Day 3: Models & Relationships
+
+Tasks:
+
+Create models: User, Role, Service, Appointment, PricingPlan, WebsiteContent, Testimonial
+
+Define relationships:
+
+// User.php
+public function role() { return $this->belongsTo(Role::class); }
+public function appointments() { return $this->hasMany(Appointment::class); }
+
+// Service.php
+public function staff() { return $this->belongsToMany(User::class, 'service_staff'); }
+
+// Appointment.php
+public function client() { return $this->belongsTo(User::class, 'client_id'); }
+public function staff() { return $this->belongsTo(User::class, 'staff_id'); }
+
+
+Seed roles: admin, staff, client
+
+Day 4: Role-Based Middleware & Auth
+
+Tasks:
+
+Create RoleMiddleware.php
+
+Check user role before accessing admin
+
+Register in Kernel.php
+
+Setup routes with middleware:
+
+Route::prefix('admin')->middleware(['auth','role:admin'])->group(function() {
+  Route::get('/dashboard', [AdminController::class,'dashboard']);
+});
+
+
+Test admin access
+
+Day 5: Admin Dashboard Layout
+
+Tasks:
+
+Create Blade templates:
+
+resources/views/admin/
+├─ partials/header.blade.php
+├─ partials/sidebar.blade.php
+├─ dashboard.blade.php
+
+
+Include sidebar, header, stats cards
+
+Include Bootstrap 5 + FontAwesome
+
+Setup sidebar toggle JS
+
+Test responsive layout
+
+Day 6: Services CRUD
+
+Tasks:
+
+Create ServiceController: php artisan make:controller ServiceController --resource
+
+Implement CRUD: index, store, update, destroy
+
+Create Blade: services.blade.php with table & modals
+
+Many-to-many staff assignment
+
+Add status badge (Published, Draft)
+
+Test:
+
+Add, edit, delete services
+
+Assign staff to services
+
+Day 7: Staff Management
+
+Tasks:
+
+Use User model for staff
+
+StaffController CRUD
+
+Blade: staff.blade.php
+
+Show cards with image, name, position, availability badge
+
+Add modal for add/edit staff
+
+Assign roles correctly (staff role)
+
+Day 8: Appointments Management
+
+Tasks:
+
+AppointmentController CRUD
+
+Blade: appointments.blade.php
+
+Columns: Client, Service, Staff, Date/Time, Status, Amount, Actions
+
+Status: Confirmed, Pending, Cancelled
+
+Test booking workflow
+
+Connect to frontend booking form
+
+Day 9: Pricing Plans & Website Content
+
+Pricing Plans:
+
+PricingPlanController CRUD
+
+Blade: pricing.blade.php
+
+Features JSON field
+
+Cards for Starter, Professional, Enterprise
+
+Activate/deactivate plans
+
+Website Content:
+
+WebsiteContentController
+
+Blade: website-content.blade.php
+
+Hero section form (title, subtitle, image)
+
+Testimonials CRUD (client_name, position, text, rating)
+
+Frontend welcome page uses DB content dynamically
+
+Day 10: Frontend Integration
+
+Tasks:
+
+welcome.blade.php loads:
+
+Services
+
+Staff
+
+Testimonials
+
+Pricing plans
+
+Booking form → posts to appointments.store
+
+Blade looping:
+
+@foreach($services as $service)
+  <div>{{ $service->name }} - {{ $service->price }}</div>
+@endforeach
+
+
+Dynamic Hero section
+
+Responsive layout
+
+Day 11: Extra Features
+
+Tasks:
+
+Search & Filter:
+
+Services, Appointments
+
+CSV Export: maatwebsite/excel
+
+Notifications:
+
+New appointment notification to staff/admin
+
+Frontend/Backend validation
+
+Responsive tweaks for mobile/tablet
+
+Day 12: Testing & Deployment
+
+Tasks:
+
+Test CRUD for all modules
+
+Test role-based access
+
+Test dynamic frontend data
+
+Test notifications & CSV export
+
+Test on mobile devices
+
+Compile assets: npm run build
+
+Run migrations & seeders: php artisan migrate --seed
+
+Deploy to server
+
+Final Project Outcome
+
+Admin Dashboard: Services, Staff, Appointments, Pricing, Website Content
+
+Roles: Admin, Staff, Client (role-based permissions)
+
+Frontend: Fully dynamic website pulling DB content
+
+Extra Features: Search, filter, CSV export, notifications
+
+Responsive Design: Desktop, tablet, mobile
+
+Professional Flow: Real-world SaaS booking system
+
+Main ne complete day-by-day plan, tables, controllers, blade, middleware, frontend integration aur extra features sab include kar diya hai.
+
+Agar aap chaho, main Day 1 se Day 12 tak exact file creation aur code snippets + migration details + blade modals bhi provide kar doon, taki aap har din copy-paste karke project complete kar sako.
+
+Kya main wo next step provide kar doon?
